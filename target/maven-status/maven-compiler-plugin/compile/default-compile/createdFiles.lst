@@ -19,6 +19,7 @@ org/nuc/purefriends/util/EncodeUtil.class
 org/nuc/purefriends/service/UserService.class
 org/nuc/purefriends/dao/FriendMapper.class
 org/nuc/purefriends/service/NotificationService.class
+org/nuc/purefriends/controller/ResourceController.class
 org/nuc/purefriends/dao/AdminMapper.class
 org/nuc/purefriends/dao/MessageMapper.class
 org/nuc/purefriends/controller/AdminController.class

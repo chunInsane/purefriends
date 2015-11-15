@@ -71,7 +71,7 @@
       <ol>
         <c:forEach items="${friends}" var="friend">
           <li>
-            <span class="col-3">${friend.nickname}</span><span class="col-5">${friend.email}</span><span class="col-2"><a href="<%=request.getContextPath()%>/msg/sendMsg/${loginUser.id}/${friend.id}">发送信件</a><a href="#">删除</a></span>
+            <span class="col-3">${friend.nickname}</span><span class="col-5">${friend.email}</span><span class="col-2"><a href="<%=request.getContextPath()%>/msg/sendMsg/${loginUser.id}/${friend.id}">发送信件</a><a href="<%=request.getContextPath()%>/user/deleteFriend/${loginUser.id}/${friend.id}">删除</a></span>
           </li>
         </c:forEach>
       </ol>

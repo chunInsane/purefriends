@@ -16,6 +16,7 @@
   <title>修改个人信息</title>
   <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css">
   <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/normalize.css">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/ThreeLevelLinkage.css">
   <link rel="alternate icon" type="img/gif" href="<%=request.getContextPath()%>/resources/img/logo.gif">
 </head>
 <body>
@@ -43,10 +44,34 @@
             <option value="0">female</option>
           </sf:select>
         </div>
+        <!-- 三级联动 开始 -->
         <div class="input-info">
-          <label for="area">area</label>
-          <sf:input type="text" class="input" placeholder="area" path="area"/>
+          <label for="">省</label>
+          <div class="select-option" id="province-option">
+            <input type="text" value=""  class="input" placeholder="未选择省" id="province-value" onclick="showP();" required>
+            <ul class="select" id="province" data-province="">
+            </ul>
+          </div>
         </div>
+        <div class="input-info">
+          <label for="">市</label>
+          <div class="select-option" id="city-option">
+            <input type="text" value=""  class="input" placeholder="未选择城市" id="city-value" onclick="showC();" required>
+            <ul class="select" id="city" data-city="">
+            </ul>
+          </div>
+        </div>
+        <div class="input-info">
+          <label for="">区/县</label>
+          <div class="select-option" id="district-option">
+            <input type="text" value=""  class="input" placeholder="未选择区"  id="district-value" onclick="showD();" required>
+            <ul class="select" id="district" name="#" data-dist="" data-location="">
+            </ul>
+          </div>
+        </div>
+        <sf:input type="hidden" value="" id="location-str" data-location="" path="area" required="required"></sf:input>
+        <!-- 三级联动 结束 -->
+
         <div class="input-info">
           <label for="marriage">marriage</label>
           <sf:select path="marriage" class="input" required="required">
@@ -89,6 +114,8 @@
 </div>
 <jsp:include page="../footer.jsp"/>
 </body>
+<script src="/resources/js/ThreeLevelLinkage.js" type="text/javascript">
+</script>
 <style>
   body{
     padding-top: 60px;

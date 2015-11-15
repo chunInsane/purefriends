@@ -179,6 +179,7 @@ a{
 	width: 100%;
 	top:0px;
 	box-shadow: 1px 0px 2px 1px #888;
+	z-index: 999;
 }
 /*导航栏 logo 开始*/
 .nav-logo{
@@ -295,7 +296,7 @@ a{
 	top:12.5px;
 	width:35px;
 	/*background-color: #FFF;*/
-	background: url(./img/searchBtn.jpg) no-repeat center;
+	background: url(/resources/img/searchBtn.jpg) no-repeat center;
 	background-size: 100% 100%;
 }
 /*search 模块结束*/
@@ -304,7 +305,7 @@ a{
 	/*background-color: #C70C0C;*/
 	background-image: -webkit-linear-gradient(top,#C70C0C,#C00A0A);
 	height:5px;
-	position:relative;
+	position:fixed;
 	/*top:60px;*/
 	width:100%;
 	/*top:;*/

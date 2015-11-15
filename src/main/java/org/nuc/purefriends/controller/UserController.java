@@ -190,6 +190,16 @@ public class UserController {
         return "user/showOtherInfo";
     }
 
+    @RequestMapping( value = "/deleteFriend/{fromId}/{toId}")
+    public String deleteFriend(@PathVariable Long fromId, @PathVariable Long toId, Model model) {
+        if ( fromId == null || fromId < 1 || toId == null || toId < 1)
+            throw new UserException( "the argument is illegal!");
+        friendService.deleteFriend( fromId, toId);
+        friendService.deleteFriend( toId, fromId);
+        model.addAttribute( "tip", "删除好友成功!");
+        return "user/tip";
+    }
+
     @RequestMapping( value="/logout")
     public String logout(HttpSession session) {
         session.invalidate();

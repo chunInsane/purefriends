@@ -1,0 +1,61 @@
+#city-option , #district-option{
+    /*display: none;*/
+}
+.select-option {
+    /*width:300px;*/
+    width: 78%;
+    /*margin-top: 50px;*/
+    /*margin-left: 200px;*/
+    display: inline-block;
+    position: relative;
+    height: auto;
+    background: none;
+
+}
+.select-option >input{
+    /*background: #ABBEFF;*/
+    border: 1px solid #D5D5D5;
+    /*border: none;*/
+    height: auto;
+    margin: 0px;
+    outline: none;
+    padding: 5px 0px;
+    width: 100% !important;
+}
+.select{
+    background: rgba(230,230,230,1);
+    /*border:1px solid #D5D5D5;*/
+    border-radius:5px;
+    /*box-shadow: 2px 2px 5px 3px rgba(0,0,0,0.35);*/
+    cursor: pointer;
+    display: none;
+    list-style: none;
+    margin: 0px;
+    max-height: 200px;
+    min-height: 0px;
+    height: 0px;
+    overflow: scroll;
+    overflow-x:hidden;
+    padding: 0px;
+    position: absolute;
+    text-align: center;
+    top: 30px;
+    width: 100%;
+    z-index: 999;
+}
+.select li:hover{
+    background: #A80C0C;
+    color: #fff;
+}
+#province-option:hover #province{
+    display: block;
+    height: auto;
+}
+#city-option:hover #city{
+    display: block;
+    height: auto;
+}
+#district-option:hover #district{
+    display: block;
+    height: auto;
+}
