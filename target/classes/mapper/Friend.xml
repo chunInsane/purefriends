@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.nuc.purefriends.dao.FriendMapper">
+
+    <resultMap id="friendResultMap" type="org.nuc.purefriends.model.Friend">
+        <id column="id" property="id"/>
+        <result column="user1_id" property="user1Id"/>
+        <result column="user2_id" property="user2Id"/>
+    </resultMap>
+
+    <select id="loadFriend" parameterType="map" resultMap="friendResultMap">
+       SELECT * FROM tb_friend
+       WHERE `user1_id` = #{user1Id} AND `user2_id` = #{user2Id}
+    </select>
+
+
+    <insert id="addFriend" parameterType="map" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tb_friend(
+        `user1_id`, `user2_id`
+        ) VALUES (
+        #{user1Id}, #{user2Id}
+        )
+    </insert>
+
+    <delete id="deleteFriend" parameterType="map">
+        DELETE FROM tb_friend WHERE `user1_id` = #{user1Id} AND `user2_id` = #{user2Id}
+    </delete>
+
+</mapper>

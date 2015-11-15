@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="purefriends:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="purefriends.war">
+      <element id="artifact" artifact-name="purefriends:war exploded" />
+    </root>
+  </artifact>
+</component>

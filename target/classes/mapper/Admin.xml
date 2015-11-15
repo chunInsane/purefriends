@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.nuc.purefriends.dao.AdminMapper">
+
+    <resultMap id="adminResultMap" type="org.nuc.purefriends.model.Admin">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="nickname" property="nickname"/>
+    </resultMap>
+
+    <select id="loadByUsername" parameterType="java.lang.String" resultMap="adminResultMap">
+        SELECT * FROM tb_admin
+        WHERE `username` = #{username}
+    </select>
+
+    <select id="loadById" parameterType="java.lang.Long" resultMap="adminResultMap">
+        SELECT * FROM tb_admin
+        WHERE `id` = #{adminId}
+    </select>
+
+    <select id="getAllAdmin" resultMap="adminResultMap">
+        SELECT * FROM tb_admin
+    </select>
+
+    <update id="updateAdmin" parameterType="org.nuc.purefriends.model.Admin">
+        UPDATE `tb_admin`
+        SET `nickname` = #{nickname}
+    </update>
+
+    <delete id="deleteAdmin" parameterType="java.lang.Long">
+        DELETE FROM tb_admin
+        WHERE `id` = #{adminId}
+    </delete>
+
+    <insert id="addAdmin" parameterType="org.nuc.purefriends.model.Admin" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+        tb_admin(
+            `username`, `password`, `nickname`
+        )
+        VALUES(
+            #{username}, #{password}, #{nickname}
+        )
+    </insert>
+</mapper>

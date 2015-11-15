@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.nuc.purefriends.dao.UserMapper">
+
+    <resultMap type="org.nuc.purefriends.model.User" id="userResultMap">
+        <id column="id" property="id" />
+        <result column="email" property="email"/>
+        <result column="password" property="password"/>
+        <result column="gender" property="gender"/>
+        <result column="area" property="area"/>
+        <result column="marriage" property="marriage"/>
+        <result column="height" property="height"/>
+        <result column="education" property="education"/>
+        <result column="wage" property="wage"/>
+        <result column="phone" property="phone"/>
+        <result column="nickname" property="nickname"/>
+        <result column="info" property="info"/>
+        <result column="hobby" property="hobby"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <select id="getUserById" parameterType="java.lang.Long" resultMap="userResultMap">
+        SELECT * FROM tb_user WHERE `id` = #{userId}
+    </select>
+
+    <select id="loadUserByEmail" parameterType="java.lang.String" resultMap="userResultMap">
+        SELECT * FROM tb_user WHERE `email` = #{email}
+    </select>
+
+    <select id="getBy" parameterType="org.nuc.purefriends.model.User" resultMap="userResultMap">
+        SELECT * FROM tb_user
+        <trim suffix="WHERE" suffixOverrides="AND|OR">
+            <if test="id != null">
+               AND `id` = #{id}
+            </if>
+            <if test="gender != null">
+               AND `gender` = #{gender}
+            </if>
+            <if test="marriage != null">
+               AND `marriage` = #{marriage}
+            </if>
+            <if test="phone != null">
+               AND `phone` = #{phone}
+            </if>
+            <if test="nickname != null">
+               AND `nickname` LIKE CONTACT( '%', #{nickname}, '%')
+            </if>
+        </trim>
+        ORDER BY `create_time` DESC
+    </select>
+
+    <select id="getByKeyword" parameterType="java.lang.String" resultMap="userResultMap">
+        SELECT * FROM tb_user
+        WHERE
+        `email` LIKE CONTACT( '%', #{keyword}, '%')
+        OR
+        `nickname` LIKE CONTACT( '%', #{keyword}, '%')
+    </select>
+
+    <select id="getByPhone" parameterType="java.lang.String" resultMap="userResultMap">
+        SELECT * FROM tb_user
+        WHERE
+        `phone` LIKE CONTACT( '%', #{phone}, '%')
+    </select>
+
+    <delete id="deleteUserById" parameterType="java.lang.Long">
+        DELETE FROM tb_user WHERE `id` = #{userId}
+    </delete>
+
+    <update id="updateUser" parameterType="org.nuc.purefriends.model.User">
+        UPDATE `tb_user`
+        <trim prefix="set" suffixOverrides=",">
+            <if test="email != null">`email` = #{email},</if>
+            <if test="password != null">`password` = #{password},</if>
+            <if test="gender != null">`gender` = #{gender},</if>
+            <if test="area != null">`area` = #{area},</if>
+            <if test="marriage != null">`marriage` = #{marriage},</if>
+            <if test="height != null">`height` = #{height},</if>
+            <if test="education != null">`education` = #{education},</if>
+            <if test="wage != null">`wage` = #{wage},</if>
+            <if test="phone != null">`phone` = #{phone},</if>
+            <if test="nickname != null">`nickname` = #{nickname},</if>
+            <if test="info != null">`info` = #{info},</if>
+            <if test="hobby != null">`hobby` = #{hobby},</if>
+          </trim>
+        WHERE `id` = #{id}
+    </update>
+
+    <insert id="addUser" parameterType="org.nuc.purefriends.model.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `tb_user` (
+        <trim suffixOverrides=",">
+            <if test="email != null">`email`,</if>
+            <if test="password != null">`password`,</if>
+            <if test="gender != null">`gender`,</if>
+            <if test="area != null">`area`,</if>
+            <if test="marriage != null">`marriage`,</if>
+            <if test="height != null">`height`,</if>
+            <if test="education != null">`education`,</if>
+            <if test="wage != null">`wage`,</if>
+            <if test="phone != null">`phone`,</if>
+            <if test="nickname != null">`nickname`,</if>
+            <if test="info != null">`info`,</if>
+            <if test="hobby != null">`hobby`,</if>
+        </trim>
+        ) VALUES (
+        <trim suffixOverrides=",">
+            <if test="email != null">`email` = #{email},</if>
+            <if test="password != null">`password` = #{password},</if>
+            <if test="gender != null">`gender` = #{gender},</if>
+            <if test="area != null">`area` = #{area},</if>
+            <if test="marriage != null">`marriage` = #{marriage},</if>
+            <if test="height != null">`height` = #{height},</if>
+            <if test="education != null">`education` = #{education},</if>
+            <if test="wage != null">`wage` = #{wage},</if>
+            <if test="phone != null">`phone` = #{phone},</if>
+            <if test="nickname != null">`nickname` = #{nickname},</if>
+            <if test="info != null">`info` = #{info},</if>
+            <if test="hobby != null">`hobby` = #{hobby},</if>
+        </trim>
+        )
+    </insert>
+
+</mapper>
