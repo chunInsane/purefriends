@@ -90,10 +90,10 @@ public class UserController {
         MailObject object = new MailObject();
         object.setHostname("smtp.163.com");
         MailObject.MailAuthentication authentication = new MailObject.MailAuthentication();
-        authentication.setUsername("feelwelltop@163.com");
-        authentication.setPassword("vcnoasotxcvqbpww");
+        authentication.setUsername("tmp@163.com");
+        authentication.setPassword("tmp@qq.com");
         object.setMailAuthentication(authentication);
-        object.setCcAddresses("842469848@qq.com");
+        object.setCcAddresses("hello@qq.com");
         String activeUrl = "http://localhost:8888/user/activeUser?tid=" + tempUser.getId() + "&key=" + tempUser.getKey();
         object.setSubject("PureFriends账户激活");
         object.setToAddresses(tempUser.getEmail());

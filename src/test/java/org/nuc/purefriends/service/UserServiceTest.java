@@ -21,10 +21,10 @@ public class UserServiceTest {
     @Test
     public void testAddUser() {
         User user = new User();
-        user.setEmail("838505099@qq.com");
+        user.setEmail("hello@qq.com");
         user.setPassword("121212");
         user.setGender(1);
-        user.setArea("山西省|太原市|尖草坪区");
+        user.setArea("area");
         user.setMarriage(0);
         user.setHeight(180);
         user.setEducation("大学本科");
@@ -42,7 +42,7 @@ public class UserServiceTest {
 
     @Test
     public void testLogin() {
-        User user = userService.login( "chuninsane@163.com", "123456");
+        User user = userService.login( "hello@163.com", "123456");
         if (user == null)
             System.out.println("null");
         else
